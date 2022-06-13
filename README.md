@@ -1,5 +1,7 @@
 # Contentful and Hydrogen Starter
 
+![Hydrogen + Contentful Starter Template](./screenshot.png 'Starter Template for Hydrogen + Contentful')
+
 Starter template to create a Shopify custom storefront with Contentful and Hydrogen
 
 Hydrogen is a React framework and SDK that you can use to build fast and dynamic Shopify custom storefronts.
