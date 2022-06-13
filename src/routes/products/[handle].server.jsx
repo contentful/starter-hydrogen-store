@@ -12,6 +12,7 @@ import {
 import ProductDetails from '../../components/ProductDetails.client';
 import NotFound from '../../components/NotFound.server';
 import Layout from '../../components/Layout.server';
+import {useContentfulQuery} from '../../api/useContetnfulQuery';
 
 export default function Product() {
   const {handle} = useRouteParams();
@@ -45,6 +46,13 @@ export default function Product() {
   if (!product) {
     return <NotFound />;
   }
+
+  product.contentful = useContentfulQuery({
+    query: CONTENTFUL_QUERY,
+    variables: {
+      handle,
+    },
+  });
 
   return (
     <Layout>
@@ -229,6 +237,19 @@ const QUERY = gql`
             referenceValue
           }
         }
+      }
+    }
+  }
+`;
+
+const CONTENTFUL_QUERY = gql`
+  query ($handle: String!) {
+    # add your query
+    productCollection(where: {handle: $handle}) {
+      items {
+        productName
+        productDescription
+        tags
       }
     }
   }

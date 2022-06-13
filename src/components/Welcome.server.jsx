@@ -6,7 +6,6 @@ import {
   gql,
 } from '@shopify/hydrogen';
 import {Suspense} from 'react';
-import {useContentfulQuery} from '../api/useContetnfulQuery';
 
 function ExternalIcon() {
   return (
@@ -46,10 +45,6 @@ function BoxFallback() {
 
 function StorefrontInfo() {
   const {languageCode} = useShop();
-
-  const contentfulData = useContentfulQuery({query: CONTENTFUL_QUERY});
-
-  console.dir(contentfulData, {depth: 5});
 
   const {data} = useShopQuery({
     query: QUERY,
@@ -205,17 +200,6 @@ const QUERY = gql`
         node {
           handle
         }
-      }
-    }
-  }
-`;
-
-const CONTENTFUL_QUERY = gql`
-  query {
-    # add your query
-    productCollection {
-      items {
-        productName
       }
     }
   }

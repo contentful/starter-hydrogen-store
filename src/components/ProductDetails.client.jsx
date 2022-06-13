@@ -125,6 +125,10 @@ export default function ProductDetails({product}) {
       metafield.key === 'lifetime_warranty',
   );
 
+  const contentfulProduct = product.contentful
+    ? product.contentful.data.productCollection.items[0]
+    : undefined;
+
   return (
     <>
       <ProductOptionsProvider
@@ -230,6 +234,22 @@ export default function ProductDetails({product}) {
             )}
           </div>
         </div>
+        {contentfulProduct && (
+          <>
+            <h2>
+              <b>Product name from Contentful</b>{' '}
+              {contentfulProduct.productName}
+            </h2>
+            <fieldset>
+              <ul>
+                {contentfulProduct.tags &&
+                  contentfulProduct.tags.map((tag) => (
+                    <li key={`tag-${tag}`}>{tag}</li>
+                  ))}
+              </ul>
+            </fieldset>
+          </>
+        )}
       </ProductOptionsProvider>
     </>
   );
