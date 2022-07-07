@@ -10,8 +10,6 @@ Contentful is the most flexible and easy headless CMS that can power up your cus
 
 [Check out the docs](https://shopify.dev/custom-storefronts/hydrogen)
 
-[Run this template on StackBlitz](https://stackblitz.com/github/Shopify/hydrogen/tree/stackblitz/templates/demo-store)
-
 ## What's in this template
 
 - Styling with [Tailwind](https://tailwindcss.com/)
@@ -40,7 +38,21 @@ yarn
 yarn dev
 ```
 
+**Optionally** you can pre-fill your Contentful empty space with Content:
+
+Install contentful cli and import `./contentful-export.json` content.
+
+In the project root folder run the following in your terminal:
+
+```bash
+npm i -g contentful-cli
+# Then
+contentful space import --space-id YOUR_SPACE_ID --content-file ./contentful-export.json
+```
+
 Remember to update `hydrogen.config.js` with your shop's domain and Storefront API token!
+
+---
 
 ## Previewing a production build
 
